@@ -1,0 +1,40 @@
+{
+  "name": "cypress-noon",
+  "version": "1.0.0",
+  "description": "This is new project test Jira with cypress and run with moon",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress run --reporter mochawesome",
+    "test-allure": "npx cypress run --env allure=true,allureResultsPath=allure-results",
+    "test-junit": "npx cypress run --reporter mocha-junit-reporter",
+    "test-moon": "cypress-moon 'http://moon.agileops.int/cypress/chrome?headless=false' --reporter mochawesome",
+    "cy:run": "cypress run --env allure=true",
+    "clean:folders": "rm -R -f allure-report/* && rm -R -f allure-results/*",
+    "allure:report": "npm run allure generate allure-results --clean -o allure-report && allure open allure-report",
+    "beforetest": "npm run clean:folders",
+    "tests": "npm run cy:run || npm run aftertest",
+    "aftertest": "npm run allure:report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kkimngann/cypress-moon.git"
+  },
+  "keywords": [
+    "test"
+  ],
+  "author": "nganntk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kkimngann/cypress-moon/issues"
+  },
+  "homepage": "https://github.com/kkimngann/cypress-moon#readme",
+  "devDependencies": {
+    "@shelex/cypress-allure-plugin": "^2.38.3",
+    "allure-commandline": "^2.21.0",
+    "cypress": "^12.9.0",
+    "junit-viewer": "^4.11.1",
+    "mocha-allure-reporter": "^1.4.0",
+    "mocha-junit-reporter": "^2.2.0",
+    "mochawesome": "^7.1.3"
+  }
+}
