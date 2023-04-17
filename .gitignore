@@ -1,0 +1,6 @@
+.gitignore
+/node_modules
+./video
+/allure-report
+/allure-results
+.DS_store
